@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+input[type="file"] {
+  @apply bg-gray-200;
+  color: black;
+  @apply p-2;
+  @apply rounded-lg;
+  @apply border-2;
+  @apply border-gray-300;
+  @apply focus:border-blue-500;
+  @apply focus:outline-none;
+}
+.upload-btn {
+  @apply bg-blue-500;
+  @apply text-white;
+  @apply rounded-lg;
+  @apply border-2;
+  @apply border-blue-500;
+  @apply focus:border-blue-500;
+  @apply focus:outline-none;
+  @apply cursor-pointer;
+  padding: 0.5em 1.5em;
+}
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
+
+  flex-wrap: wrap;
+}
+.upload-container > div {
+  flex-wrap: wrap;
+  width: 100%;
+}
+.upload-container button {
+  cursor: pointer;
+}
+.footer-chatbar-container {
+  position: fixed;
+  bottom: 0;
+  width: 90%;
+  max-width: 900px;
+  margin: 2em;
+  cursor: pointer;
+  border-radius: 50px;
+  padding: 0.2em;
+  user-select: none;
+}
+.ani {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  padding: 0.5em 0.5em;
+  padding-right: 1em;
+  border-radius: 50px;
+}
+header {
+  top: 0;
+  z-index: 50;
+  margin: 0 auto;
+}
+.footer-chatbar {
+  width: 100%;
+  font-size: 1.1rem;
+  outline: none;
+  padding: 0.5em;
+}
+/* .animated-border { */
+/* Set a transparent border to use border-image */
+/* border: 2px solid transparent; */
+
+/* Create a gradient border */
+/* 
+  animation: borderAnimation 2s linear infinite;
+} */
