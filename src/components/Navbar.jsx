@@ -40,7 +40,7 @@ export function Navbar() {
             <Bars3Icon aria-hidden="true" className="size-6" />
           </button>
         </div>
-        {/* Navigation links visible on screens >=640 px */}
+        {/* Navigation links visible --- >=640 px */}
         <div className="hidden sm:flex sm:gap-x-12 ">
           <div className="sm:flex sm:gap-x-6 ">
             {navigation.map((item) => (
