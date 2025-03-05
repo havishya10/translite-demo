@@ -272,32 +272,8 @@ example output:
           <p>{error}</p>
         </div>
       )}
-      {/* Display Extracted Questions */}
-      {/* this is the extarcted question and answer section */}}
-      {/* Display Generated Answers */}
+
       {props.answers.length > 0 && props.setExtractedAnswerStatus(true)}
-      {/* // (
-      //   <div className="mt-8">
-      //     <h2>Generated Answers:</h2>
-      //     <pre>{answers}</pre>
-      //   </div>
-      // )
-      
-       */}
-      {/* {extractedQuestions.length > 0 &&
-        props.setExtractedQuestionStatus(true)(
-          <div className="mt-8">
-            <h2>Extracted Questions:</h2>
-            <pre>{extractedQuestions}</pre>
-          </div>
-        )}
-      {/* Display Generated Answers */}
-      {/* {answers.length > 0 && (
-        <div className="mt-8">
-          <h2>Generated Answers:</h2>
-          <pre>{answers}</pre>
-        </div>
-      )} */}
     </>
   );
 }
