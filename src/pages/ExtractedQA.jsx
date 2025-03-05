@@ -10,7 +10,7 @@ export function ExtractedQA(props) {
         <div>
           <h1 className="text-center">Extracted Questions</h1>
           <div className="extracted-questions-container overflow-y-auto scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 mt-6 bg-slate-900/50 backdrop-blur-md rounded-lg border border-slate-800/30 shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
-            {props.extractedQuestionStatus ? (
+            {props.extractedQuestions ? (
               <pre className="motion-preset-typewriter ">
                 {props.extractedQuestions}
               </pre>
