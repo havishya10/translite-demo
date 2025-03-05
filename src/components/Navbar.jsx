@@ -113,10 +113,10 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className=" fixed bg-slate/30 backdrop-blur-md  shadow-md ">
+    <header className=" w-full sticky top-0  z-50 bg-gray/90 backdrop-blur-md  shadow-md ">
       <nav
         aria-label="Global"
-        className="flex items-center justify-between pt-5 pb-4 pr-6 pl-6 sm:px-8"
+        className="flex items-center justify-between pt-5 pb-4 sm:px-8"
       >
         <div className="flex sm:flex-1">
           <a

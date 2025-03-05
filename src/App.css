@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "tailwindcss-motion";
 
 input[type="file"] {
   @apply bg-gray-200;
@@ -10,7 +11,7 @@ input[type="file"] {
   @apply focus:border-blue-500;
   @apply focus:outline-none;
 }
-.upload-btn {
+/* .upload-btn {
   @apply bg-blue-500;
   @apply text-white;
   @apply rounded-lg;
@@ -20,7 +21,7 @@ input[type="file"] {
   @apply focus:outline-none;
   @apply cursor-pointer;
   padding: 0.5em 1.5em;
-}
+} */
 .upload-container {
   display: flex;
   flex-direction: column;
@@ -36,6 +37,9 @@ input[type="file"] {
 }
 .upload-container button {
   cursor: pointer;
+}
+.upl-btn:hover {
+  @apply bg-blue-600;
 }
 .footer-chatbar-container {
   position: fixed;
@@ -68,6 +72,29 @@ header {
   outline: none;
   padding: 0.5em;
 }
+.extracted-response-container {
+  width: 100%;
+  display: grid;
+  /* border: 1px solid blue; */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2em;
+  margin: 1em 0em;
+  padding: 1em;
+}
+
+.extracted-questions-container {
+  height: 75vmax;
+  /* backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem; */
+}
+.extracted-answers-container {
+  height: 75vmax;
+  font-size: 1rem;
+}
 /* .animated-border { */
 /* Set a transparent border to use border-image */
 /* border: 2px solid transparent; */
@@ -76,3 +103,7 @@ header {
 /* 
   animation: borderAnimation 2s linear infinite;
 } */
+
+.loader {
+  margin-top: 10em !important;
+}
