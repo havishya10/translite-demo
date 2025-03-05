@@ -14,6 +14,8 @@ export default function App() {
     React.useState(false);
   const [extractedQuestions, setExtractedQuestions] = React.useState([]);
   const [answers, setAnswers] = React.useState([]);
+  const [extrQuesEng, setExtrQuesEng] = React.useState([]);
+  const [loading, setLoading] = React.useState(false);
 
   return (
     <>
@@ -27,6 +29,8 @@ export default function App() {
             answers={answers}
             extractedQuestionStatus={extractedAnswerStatus}
             extractedAnswerStatus={extractedAnswerStatus}
+            extrQuesEng={extrQuesEng}
+            loading={loading}
           />
         ) : (
           <div className="flex flex-col justify-center items-center gap-12 mt-12">
@@ -39,6 +43,8 @@ export default function App() {
               answers={answers}
               setExtractedQuestionStatus={setExtractedQuestionStatus}
               setExtractedAnswerStatus={setExtractedAnswerStatus}
+              setExtrQuesEng={setExtrQuesEng}
+              setLoading={setLoading}
             />
           </div>
         )}

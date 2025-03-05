@@ -1431,10 +1431,73 @@ export function DocumentQA(props) {
   const [usrFiles, setUsrFiles] = useState([]);
   const [questionFile, setQuestionFile] = useState(null);
   const [extractedQuestions, setExtractedQuestions] = useState([]);
+  const [extrQuesEng, setExtrQuesEng] = useState([]);
   const [answers, setAnswers] = useState([]);
-
+  const [selectLanguage, setSelectLanguage] = useState("english");
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const languages = [
+    // Tier 1: Excellent Proficiency
 
+    { code: "es", name: "Spanish" },
+    { code: "fr", name: "French" },
+    { code: "de", name: "German" },
+    { code: "zh-CN", name: "Chinese (Simplified)" },
+    { code: "zh-TW", name: "Chinese (Traditional)" },
+    { code: "ja", name: "Japanese" },
+    { code: "pt-BR", name: "Portuguese (Brazilian)" },
+    { code: "pt-PT", name: "Portuguese (European)" },
+    { code: "it", name: "Italian" },
+    { code: "ru", name: "Russian" },
+    { code: "ko", name: "Korean" },
+    { code: "ar", name: "Arabic" },
+    { code: "nl", name: "Dutch" },
+
+    // Tier 2: Good Proficiency
+    { code: "hi", name: "Hindi" },
+    { code: "tr", name: "Turkish" },
+    { code: "vi", name: "Vietnamese" },
+    { code: "pl", name: "Polish" },
+    { code: "id", name: "Indonesian" },
+    { code: "sv", name: "Swedish" },
+    { code: "da", name: "Danish" },
+    { code: "no", name: "Norwegian (Bokmål)" },
+    { code: "nn", name: "Norwegian (Nynorsk)" },
+    { code: "fi", name: "Finnish" },
+    { code: "he", name: "Hebrew" },
+    { code: "el", name: "Greek" },
+    { code: "cs", name: "Czech" },
+    { code: "ro", name: "Romanian" },
+    { code: "hu", name: "Hungarian" },
+    { code: "th", name: "Thai" },
+    { code: "uk", name: "Ukrainian" },
+
+    // Tier 3: Functional Proficiency
+    { code: "bn", name: "Bengali" },
+    { code: "mr", name: "Marathi" },
+    { code: "ta", name: "Tamil" },
+    { code: "te", name: "Telugu" },
+    { code: "gu", name: "Gujarati" },
+    { code: "ur", name: "Urdu" },
+    { code: "ms", name: "Malay" },
+    { code: "fil", name: "Filipino" },
+    { code: "fa", name: "Persian" },
+    { code: "bg", name: "Bulgarian" },
+    { code: "sr", name: "Serbian" },
+    { code: "hr", name: "Croatian" },
+    { code: "sk", name: "Slovak" },
+    { code: "sl", name: "Slovenian" },
+    { code: "lt", name: "Lithuanian" },
+    { code: "lv", name: "Latvian" },
+    { code: "et", name: "Estonian" },
+    { code: "ca", name: "Catalan" },
+    { code: "af", name: "Afrikaans" },
+    { code: "sq", name: "Albanian" },
+    { code: "hy", name: "Armenian" },
+    { code: "ka", name: "Georgian" },
+    { code: "ne", name: "Nepali" },
+    { code: "pa", name: "Punjabi" },
+  ];
   const handleUserDocumentUpload = (files) => {
     setUsrFiles(files);
   };
@@ -1455,17 +1518,21 @@ export function DocumentQA(props) {
       // Step 1: Extract questions from the questionnaire document
       const resultQuestions = await uploadFileToGemini(
         [questionFile],
-        "Extract all questions from this document."
+        `Extract all questions from this document in ${selectLanguage}`
       );
-      setExtractedQuestions(resultQuestions);
-      props.setExtractedQuestions(resultQuestions);
+      props.setExtractedQuestions(resultQuestions); // extracting in user specified language
+      const resultQuestionsEng = await uploadFileToGemini(
+        [questionFile],
+        "Extract all questions from this document"
+      );
+      setExtrQuesEng(resultQuestionsEng); // extracting in eglish for the model to understand and translate it back
+
       const answerSysprompt = `
-      You are an advanced AI assistant tasked with generating detailed, context-aware, and well-structured answers to questions based on provided documents. Your goal is to provide clear, engaging, and balanced explanations that are easy to understand while retaining key terminologies and ensuring accuracy.
+      You are an advanced AI assistant tasked with generating detailed, context-aware, and well-structured answers to questions based on provided documents. Your goal is to provide clear, engaging, and balanced explanations that are easy to understand while retaining key terminologies and ensuring accuracy. 
+Here are the questions you need to answer from the provided documents, you need to answer the questions in ${selectLanguage}:
+${resultQuestionsEng}
 
-Here are the questions you need to answer from the provided documents:
-${resultQuestions}
-
-*** Follow these guidelines strictly for generating answers to the above questions:
+*** Follow these guidelines strictly for generating answers to the above questions in telugu
 
 1. **Understand the Question**:
    - Carefully analyze the question to identify its core intent and requirements.
@@ -1725,6 +1792,9 @@ example output:
       console.error("Error during upload:", error);
       setError("The model is currently overloaded. Please try again later.");
       alert(error);
+    } finally {
+      setLoading(false);
+      props.setLoading(false);
     }
   };
 
@@ -1744,15 +1814,29 @@ example output:
             onFileChange={handleQuestionnaireUpload}
           />
         </div>
-        <Button
-          className="relative inline-block rounded-xl bg-gradient-to-r from-violet-500 via-slate-500 to-violet-900"
-          onClick={handleUpload}
-          disabled={props.uploadStatus}
-        >
-          <span className=" block bg-slate-950 backdrop-blur-md rounded-xl px-8 py-3 text-white font-semibold">
-            {props.uploadStatus ? "Processing..." : "Upload"}
-          </span>
-        </Button>
+        <div className="flex justify-center gap-12 flex-wrap">
+          <select
+            className="w-35 px-4 py-2 text-sm text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-violet-950 focus:border-violet-500"
+            defaultValue="english"
+            onChange={(e) => setSelectLanguage(e.target.value)}
+          >
+            <option value="english">English</option>
+            {languages.map((lang) => (
+              <option key={lang.code} value={lang.name}>
+                {lang.name}
+              </option>
+            ))}
+          </select>
+          <Button
+            className="relative inline-block rounded-xl bg-gradient-to-r from-violet-500 via-slate-500 to-violet-900"
+            onClick={handleUpload}
+            disabled={props.uploadStatus}
+          >
+            <span className=" block bg-slate-950 backdrop-blur-md rounded-xl px-8 py-3 text-white font-semibold">
+              {props.uploadStatus ? "Processing..." : "Upload"}
+            </span>
+          </Button>
+        </div>
       </div>
       {/* Display Error Message */}
       {error && (
@@ -1760,32 +1844,8 @@ example output:
           <p>{error}</p>
         </div>
       )}
-      {/* Display Extracted Questions */}
-      {/* this is the extarcted question and answer section */}}
-      {/* Display Generated Answers */}
+
       {props.answers.length > 0 && props.setExtractedAnswerStatus(true)}
-      {/* // (
-      //   <div className="mt-8">
-      //     <h2>Generated Answers:</h2>
-      //     <pre>{answers}</pre>
-      //   </div>
-      // )
-      
-       */}
-      {/* {extractedQuestions.length > 0 &&
-        props.setExtractedQuestionStatus(true)(
-          <div className="mt-8">
-            <h2>Extracted Questions:</h2>
-            <pre>{extractedQuestions}</pre>
-          </div>
-        )}
-      {/* Display Generated Answers */}
-      {/* {answers.length > 0 && (
-        <div className="mt-8">
-          <h2>Generated Answers:</h2>
-          <pre>{answers}</pre>
-        </div>
-      )} */}
     </>
   );
 }

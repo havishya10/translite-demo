@@ -1,15 +1,11 @@
-
 import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 const navigation = [
-  { name: "feature-1", href: "#" },
-  { name: "feature-2", href: "#" },
-  { name: "feature-3", href: "#" },
-  { name: "feature-4", href: "#" },
+  { name: "DocumentQA", href: "index.html" },
+  { name: "DocuChat", href: "#" },
+  { name: "SmartNotes", href: "#" },
 ];
-
-
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -55,7 +51,7 @@ export function Navbar() {
           </div>
           <div className="sm:flex sm:flex-1 ">
             <a href="#" className="text-sm/6 font-semibold text-violet-400">
-              Log in <span aria-hidden="true">&rarr;</span>
+              Star us @github <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
         </div>
@@ -104,7 +100,7 @@ export function Navbar() {
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-violet-900 hover:bg-gray-50"
                 >
-                  Log in
+                  Star us @github
                 </a>
               </div>
             </div>

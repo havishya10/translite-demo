@@ -3,7 +3,7 @@
 
 input[type="file"] {
   @apply bg-gray-200;
-  color: black;
+
   @apply p-2;
   @apply rounded-lg;
   @apply border-2;
@@ -28,8 +28,14 @@ input[type="file"] {
   justify-content: center;
   align-items: center;
   gap: 3em;
-
   flex-wrap: wrap;
+}
+select {
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1.5em;
 }
 .upload-container > div {
   flex-wrap: wrap;
@@ -79,6 +85,7 @@ header {
   grid-template-columns: repeat(2, 1fr);
   gap: 2em;
   margin: 1em 0em;
+  color: white !important;
   padding: 1em;
 }
 
