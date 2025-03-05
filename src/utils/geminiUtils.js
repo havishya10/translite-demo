@@ -423,7 +423,7 @@ export async function uploadFileToGemini(
       try {
         // Try the primary model first
         const model = genAI.getGenerativeModel({
-          model: "gemini-2.5-flash",
+          model: "gemini-1.5-flash",
         });
         const result = await model.generateContent(fileParts);
         return result.response.text();
