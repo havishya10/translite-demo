@@ -112,7 +112,7 @@ export function DocumentQA(props) {
 Here are the questions you need to answer from the provided documents, you need to answer the questions in ${selectLanguage}:
 ${resultQuestionsEng}
 
-*** Follow these guidelines strictly for generating answers to the above questions in telugu
+*** Follow these guidelines strictly for generating answers to the above questions in ${selectLanguage}
 
 1. **Understand the Question**:
    - Carefully analyze the question to identify its core intent and requirements.
@@ -129,7 +129,7 @@ ${resultQuestionsEng}
    - Organize your answers into three main sections for clarity and readability:
      - **Introduction (10-15% of the answer)**: Briefly introduce the topic and its relevance.
      - **Main Body (70-80% of the answer)**:
-       - Break the answer into 3-4 key subsections (e.g., "1. Key Concepts," "2. Applications," "3. Challenges").
+       - Break the answer into 6-7 key subsections (e.g., "1. Key Concepts," "2. Applications," "3. Challenges").
        - Include examples, analogies, and real-world applications to make the explanation relatable.
        - Use bullet points or numbered lists for clarity when listing items or steps.
        - If applicable, leave placeholders for visual aids (e.g., diagrams, tables, flowcharts) to enhance understanding.
@@ -137,7 +137,8 @@ ${resultQuestionsEng}
 
 4. **Length and Depth**:
    - Provide sufficiently lengthy answers that cover the topic in depth without being overly verbose.
-   - Aim for 3-6 paragraphs in the main body, ensuring each paragraph adds value.
+   - Aim for 5-6 or more paragraphs in the main body, ensuring each paragraph adds value.
+   - Aim for clear detailed explanation of the points or concepts that is in the document
    - Avoid unnecessary fluff or repetition—every sentence should contribute to the explanation.
 
 5. **Key Terminologies**:
@@ -171,44 +172,22 @@ ${resultQuestionsEng}
 *** Output Format (HTML with Tailwind CSS):
 
 <div >
-  <h2 className="text-2xl font-semibold text-gray-800">Question: [Exact question from the question document]</h2>
+  <h2 className="text-xl font-semibold text-white">Question: [Exact question from the question document]</h2>
   <div className="mt-4">
-    <h3 className="text-xl font-medium text-gray-700">Introduction</h3>
-    <p className="text-gray-600 leading-relaxed">[Brief introduction to the topic and its relevance.]</p>
-    <h3 className="text-xl font-medium text-gray-700 mt-4">Main Body</h3>
+    <h3 className="text-lg font-medium text-white">Introduction</h3>
+    ...
+    <p className="text-white leading-relaxed">[Brief introduction to the topic and its relevance.]</p>
+    <h3 className="text-lg font-medium  mt-4">Main Body</h3>
     <ul className="list-disc pl-6 mt-2">
-      <li className="text-gray-600 mb-2">[Key Point 1]</li>
-      <li className="text-gray-600 mb-2">[Key Point 2]</li>
+      <li className=" mb-2">[Key Point 1]</li>
+      <li className=" mb-2">[Key Point 2]</li>
       ...
     </ul>
-    <h3 className="text-xl font-medium text-gray-700 mt-4">Conclusion</h3>
-    <p className="text-gray-600 leading-relaxed">[Summary of key points and final takeaway.]</p>
+    ....
+    <h3 className="text-lg font-medium mt-4">Conclusion</h3>
+    <p className="text-white leading-relaxed">[Summary of key points and final takeaway.]</p>
   </div>
 </div>
-
-
-example output:
-
-<div >
-  <h2 className="text-2xl font-semibold text-gray-800">Question: List and explain benefits of Scalable Computing over the Internet.</h2>
-  <div className="mt-4">
-    <h3 className="text-xl font-medium text-gray-700">Introduction</h3>
-    <p className="text-gray-600 leading-relaxed">Scalable computing over the internet addresses the growing demand for high-performance computing services, especially from the massive number of internet users. This necessitates a shift from a centralized to a distributed computing model, offering several key benefits.</p>
-    <h3 className="text-xl font-medium text-gray-700 mt-4">Main Body</h3>
-    <ul className="list-disc pl-6 mt-2">
-      <li className="text-gray-600 mb-2"><strong>High Throughput:</strong> The primary advantage is the ability to handle a vast number of tasks concurrently, drastically increasing the overall throughput. This is vital for applications like web services and internet searches which need to serve millions of users simultaneously.</li>
-      <li className="text-gray-600 mb-2"><strong>Cost-effectiveness:</strong> Distributed computing models are generally more cost-effective than centralized ones, as resources can be added or removed on demand, reducing waste from underutilization or overspending on idle resources.</li>
-      <li className="text-gray-600 mb-2"><strong>Fault Tolerance:</strong> The distributed nature of the system allows for increased fault tolerance. If one part of the system fails, others can continue operating, ensuring overall service availability and reducing downtime.</li>
-      <li className="text-gray-600 mb-2"><strong>Scalability:</strong> Scalable computing can easily adapt to increased demand by adding more resources, whether it's physical machines or virtualized instances.</li>
-      <li className="text-gray-600 mb-2"><strong>Flexibility:</strong> The system offers flexibility in choosing the hardware and software platforms that suit specific needs and enables the use of various technologies such as virtualization and containers.</li>
-    </ul>
-    <h3 class="text-xl font-medium text-gray-700 mt-4">Conclusion</h3>
-    <p class="text-gray-600 leading-relaxed">Scalable computing over the internet solves the limitations of traditional centralized computing by providing a more efficient, reliable, and flexible way to manage and utilize computational resources, especially in the context of growing user demands and diverse application requirements.</p>
-    <table> {"if any"}</table>
-  </div>
-</div>
-
-      
       `;
       const answerResponse = await uploadFileToGemini(
         usrFiles,
