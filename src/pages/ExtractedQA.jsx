@@ -1,5 +1,5 @@
 import React from "react";
-import { Spinner } from "../components/Spinner";
+import { Loader } from "../components/Loader";
 export function ExtractedQA(props) {
   console.log(props.extractedQuestions);
   console.log(props.answers);
@@ -10,33 +10,26 @@ export function ExtractedQA(props) {
         <div>
           <h1 className="text-center">Extracted Questions</h1>
           <div className="extracted-questions-container overflow-y-auto scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 mt-6 bg-slate-900/50 backdrop-blur-md rounded-lg border border-slate-800/30 shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
-            {props.loading ? (
-              <div className="flex justify-center mt-20">
-                <Spinner />
-              </div>
+            {props.extractedQuestions.length > 0 ? (
+              <pre className="typed-out typing">{props.extractedQuestions}</pre>
             ) : (
-              <pre className="motion-preset-typewriter">
-                {props.extractedQuestions}
-              </pre>
+              <Loader />
             )}
           </div>
         </div>
         <div>
           <h1 className="text-center">Extracted Answers</h1>
           <div className="extracted-answers-container overflow-y-auto scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 mt-6 bg-slate-900/50 backdrop-blur-md rounded-lg border border-slate-800/30 shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
-            <div
+                          {props.answers.length > 0 ? (
+                         <div
               className="motion-preset-typewriter "
               dangerouslySetInnerHTML={{
                 __html: props.answers,
               }}
             ></div>
-            {/* {props.extractedAnswerStatus ? (
-              <pre className="motion-preset-typewriter ">{props.answers}</pre>
-            ) : (
-              <div className="flex justify-center mt-20">
-                <Spinner />
-              </div>
-            )} */}
+              ) : (
+                <Loader />
+              )}
           </div>
         </div>
       </div>
