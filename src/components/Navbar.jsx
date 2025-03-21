@@ -50,7 +50,7 @@ export function Navbar() {
             ))}
           </div>
           <div className="sm:flex sm:flex-1 ">
-            <a href="#" className="text-sm/6 font-semibold text-violet-400">
+            <a href="https://github.com/havishya10/translite-demo" target="_blank" className="text-sm/6 font-semibold text-violet-400">
               Star us @github <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
@@ -97,7 +97,7 @@ export function Navbar() {
               </div>
               <div className="py-6">
                 <a
-                  href="#"
+                  href="https://github.com/havishya10/translite-demo" target="_blank"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-violet-900 hover:bg-gray-50"
                 >
                   Star us @github
