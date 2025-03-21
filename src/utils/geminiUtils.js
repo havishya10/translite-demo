@@ -396,7 +396,7 @@ function arrayBufferToBase64(arrayBuffer) {
 export async function uploadFileToGemini(
   files,
   sysprompt = "You are a helpful assistant",
-  retries = 3,
+  retries = 5,
   delay = 2000
 ) {
   try {
@@ -419,11 +419,16 @@ export async function uploadFileToGemini(
     fileParts.push(sysprompt);
 
     // Retry mechanism with exponential backoff
+    // const generationConfig = {
+    //   temperature: 1,
+    //   topP: 0.95,
+    //   topK: 40,
+    // };
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
         // Try the primary model first
         const model = genAI.getGenerativeModel({
-          model: "gemini-2.5-flash",
+          model: "gemini-1.5-flash-002",
         });
         const result = await model.generateContent(fileParts);
         return result.response.text();
@@ -432,7 +437,7 @@ export async function uploadFileToGemini(
           // If all retries fail, try the fallback model
           console.warn("Primary model overloaded. Trying fallback model...");
           const fallbackModel = genAI.getGenerativeModel({
-            model: "gemini-1.5-flash-002",
+            model: "gemini-2.0-flash",
           });
           const result = await fallbackModel.generateContent(fileParts);
           return result.response.text();
