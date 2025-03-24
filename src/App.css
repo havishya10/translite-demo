@@ -100,7 +100,7 @@ hr {
 .extracted-answers-container {
   /* height: 100%; */
   min-height: 68vmin;
- 
+  height: 80%;
   padding: 1em;
 
   /* backdrop-filter: blur(10px);
