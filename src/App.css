@@ -11,17 +11,6 @@ input[type="file"] {
   @apply focus:border-blue-500;
   @apply focus:outline-none;
 }
-/* .upload-btn {
-  @apply bg-blue-500;
-  @apply text-white;
-  @apply rounded-lg;
-  @apply border-2;
-  @apply border-blue-500;
-  @apply focus:border-blue-500;
-  @apply focus:outline-none;
-  @apply cursor-pointer;
-  padding: 0.5em 1.5em;
-} */
 .upload-container {
   display: flex;
   flex-direction: column;
@@ -81,14 +70,13 @@ header {
 .extracted-response-container {
   width: 100%;
   display: grid;
-  /* border: 1px solid blue; */
+
   grid-template-columns: repeat(2, 1fr);
   gap: 2em;
   margin: 1em 0em;
   color: white !important;
   padding: 1em;
-  /* height: 100%;
-  min-height: 70vh; */
+
 }
 hr {
   margin-top: 2em;
@@ -103,18 +91,7 @@ hr {
   padding: 1em;
 }
 
-/* .animated-border { */
-/* Set a transparent border to use border-image */
-/* border: 2px solid transparent; */
 
-/* Create a gradient border */
-/* 
-  animation: borderAnimation 2s linear infinite;
-} */
-
-/* .loader {
-  margin-top: 10em !important;
-} */
 .typed-out {
   width: 0;
   animation: typing 1s forwards;
@@ -127,6 +104,4 @@ hr {
     width: fit-content;
   }
 }
-@media (min-width: 600px) {
-  //
-}
+
