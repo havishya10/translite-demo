@@ -85,10 +85,10 @@ export function Upload({ title, onFileChange }) {
                   {File.length === 0 ? (
                     <>
                       <p className="text-sm text-slate-400">
-                        Support files: PDF, DOC, DOCX, JPG, PNG
+                        Support files: PDF, DOC, JPG, PNG
                       </p>
                       <p className="text-xs text-slate-400">
-                        Max file size: 10MB
+                        Max file size: 2GB
                       </p>
                     </>
                   ) : (

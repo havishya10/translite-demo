@@ -222,7 +222,7 @@ ${resultQuestionsEng}
 
   return (
     <>
-      <h1 className="text-4xl  font-extrabold bg-gradient-to-r from-violet-500 via-slate-300 to-violet-500 bg-clip-text text-transparent drop-shadow-md ">
+      <h1 className="text-4xl font-extrabold bg-gradient-to-r from-violet-500 via-slate-300 to-violet-500 bg-clip-text text-transparent drop-shadow-md ">
         Document Q/A Interaction
       </h1>
       <div className="upload-container">
