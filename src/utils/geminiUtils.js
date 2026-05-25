@@ -40,7 +40,7 @@ export async function uploadFileToGemini(
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
         const model = genAI.getGenerativeModel({
-          model: "gemini-1.5-flash-002",
+          model: "gemini-3.1-pro-preview",
         });
         const result = await model.generateContent(fileParts);
         return result.response.text();
@@ -49,7 +49,7 @@ export async function uploadFileToGemini(
         
           console.warn("Primary model overloaded. Trying fallback model...");
           const fallbackModel = genAI.getGenerativeModel({
-            model: "gemini-2.0-flash",
+            model: "gemini-3.5-flash",
           });
           const result = await fallbackModel.generateContent(fileParts);
           return result.response.text();
