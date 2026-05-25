@@ -40,7 +40,7 @@ export async function uploadFileToGemini(
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
         const model = genAI.getGenerativeModel({
-          model: "gemini-3.1-pro-preview",
+          model: "gemini-3.1-pro",
         });
         const result = await model.generateContent(fileParts);
         return result.response.text();
